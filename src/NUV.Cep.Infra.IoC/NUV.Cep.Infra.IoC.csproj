@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nuuvify.CommonPack.HealthCheck" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Security" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.StandardHttpClient" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.UnitOfWork" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Middleware" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Email" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.OpenApi" Version="1.7.2" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj" />
+    <ProjectReference Include="..\NUV.Cep.Infra.Data.Db2\NUV.Cep.Infra.Data.Db2.csproj" />
+  </ItemGroup>
+
+</Project>

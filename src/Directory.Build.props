@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <OsPlatform Condition="$(OsPlatform) == '' AND '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">Windows</OsPlatform>
+    <OsPlatform Condition="$(OsPlatform) == '' AND '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">Linux</OsPlatform>
+    <OsPlatform Condition="$(OsPlatform) == '' AND '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">OSX</OsPlatform>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+    <FileVersion>2022.08.18.1904</FileVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+    <DocumentationFile>Docs\$(MSBuildProjectName).xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(OsPlatform) == 'Linux'">
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(OsPlatform) == 'Windows'">
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="./Docs/*.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="./NLogConfigs/nlog.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="./HealthChecks/*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(ProjectDocsFiles)" DestinationFiles="@(ProjectDocsFiles-&gt;'$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectDocsFiles)')" />
+    <Copy SourceFiles="@(ProjectNLogFiles)" DestinationFiles="@(ProjectNLogFiles-&gt;'$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectNLogFiles)')" />
+    <Copy SourceFiles="@(ProjectHealthCheckFiles)" DestinationFiles="@(ProjectHealthCheckFiles-&gt;'$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectHealthCheckFiles)')" />
+    <Copy SourceFiles="@(ProjectTestFiles)" DestinationFiles="@(ProjectTestFiles-&gt;'$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectTestFiles)')" />
+    <Copy SourceFiles="@(ProjectScriptsFiles)" DestinationFolder="$(OutDir)\ScriptsPS" Condition="Exists('@(ProjectScriptsFiles)')" />
+    <RemoveDir Directories="$(OutDir)\Docs" Condition="Exists('$(OutDir)\Docs')" />
+    <RemoveDir Directories="$(OutDir)\NLogConfigs" Condition="Exists('$(OutDir)\NLogConfigs')" />
+    <RemoveDir Directories="$(OutDir)\HealthChecks" Condition="Exists('$(OutDir)\HealthChecks')" />
+  </Target>
+  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="@(ProjectDocsFiles)" DestinationFiles="@(ProjectDocsFiles-&gt;'$(PublishDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectDocsFiles)')" />
+    <Copy SourceFiles="@(ProjectNLogFiles)" DestinationFiles="@(ProjectNLogFiles-&gt;'$(PublishDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectNLogFiles)')" />
+    <Copy SourceFiles="@(ProjectHealthCheckFiles)" DestinationFiles="@(ProjectHealthCheckFiles-&gt;'$(PublishDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectHealthCheckFiles)')" />
+    <Copy SourceFiles="@(ProjectTestFiles)" DestinationFiles="@(ProjectTestFiles-&gt;'$(PublishDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="Exists('@(ProjectTestFiles)')" />
+    <Copy SourceFiles="@(ProjectScriptsFiles)" DestinationFolder="$(PublishDir)\ScriptsPS" Condition="Exists('@(ProjectScriptsFiles)')" />
+    <RemoveDir Directories="$(PublishDir)\Docs" Condition="Exists('$(PublishDir)\Docs')" />
+    <RemoveDir Directories="$(PublishDir)\NLogConfigs" Condition="Exists('$(PublishDir)\NLogConfigs')" />
+    <RemoveDir Directories="$(PublishDir)\HealthChecks" Condition="Exists('$(PublishDir)\HealthChecks')" />
+  </Target>
+</Project>

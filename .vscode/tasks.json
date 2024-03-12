@@ -1,0 +1,112 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CepApi.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "clean",
+                "${workspaceFolder}",
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "remove-obj",
+            "windows": {
+                "command": "Remove-Item -Recurse ${workspaceFolder}\\src\\*\\bin; Remove-Item -Recurse ${workspaceFolder}\\src\\*\\obj;  Remove-Item -Recurse ${workspaceFolder}\\src\\*\\Docs",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            },
+            "linux": {
+                "command": "rm -rf ${workspaceFolder}/src/*/bin ${workspaceFolder}/src/*/obj ${workspaceFolder}/src/*/Docs",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            }
+        },
+        {
+            "label": "remove-publish",
+            "windows": {
+                "command": "Remove-Item -Recurse c:\\software\\CepApi",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            },
+            "linux": {
+                "command": "rm -rf ~/software/CepApi",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            }
+        },
+        {
+            "label": "build-clean",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "clean",
+                "build"
+            ]
+        },
+        {
+            "label": "rebuild",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "remove-obj",
+                "build"
+            ]
+        },
+        {
+            "label": "publish shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "remove-obj",
+                "remove-publish",
+            ],
+            "windows": {
+                "command": "dotnet publish ${workspaceFolder}/CepApi.sln --configuration Release -o c:\\software\\CepApi",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            },
+            "linux": {
+                "command": "dotnet publish ${workspaceFolder}/CepApi.sln --configuration Release -o ~/software/CepApi",
+                "type": "shell",
+                "problemMatcher": "$msCompile"
+            },
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/CepApi.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/CepApi.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

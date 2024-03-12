@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PowerShell Launch Current File",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "cwd": "${file}"
+        },
+        {
+            "name": "Api-DEV",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "windows": {
+                "console": "externalTerminal",
+                "program": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/netcoreapp3.1/win-x64/NUV.Cep.Api.dll",
+                "args": [],
+                "cwd": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/netcoreapp3.1/win-x64/",
+                "envFile": "${userHome}/AppData/Roaming/Microsoft/UserSecrets/NUV.Cep.Api/env.qas",
+            },
+            "linux": {
+                "program": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/netcoreapp3.1/linux-x64/NUV.Cep.Api.dll",
+                "args": [],
+                "cwd": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/netcoreapp3.1/linux-x64/",
+                "envFile": "${userHome}/.microsoft/usersecrets/NUV.Cep.Api/env.qas",
+            },
+            "stopAtEntry": false,
+            "enableStepFiltering": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "^\\s*Now listening on:\\s+http://\\S+:([0-9]+)",
+                "uriFormat": "http://localhost:%s/docs"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5002",
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        }
+
+    ]
+}

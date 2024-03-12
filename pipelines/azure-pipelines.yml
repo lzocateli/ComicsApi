@@ -1,0 +1,82 @@
+parameters:
+- name: imageName
+  displayName: 'Nome da Imagem'
+  type: string
+  default: 'lzocateli/NUV.Cep.Api'
+- name: imageTag
+  displayName: 'Tag para a Imagem'
+  type: string
+  default: ''
+- name: containerName
+  displayName: 'Nome do Container'
+  type: string
+  default: 'CepApi'
+- name: configApp
+  displayName: 'Nome do arquivo de configuracao para nginx'
+  type: string
+  default: 'CepApi'
+- name: envFilePath
+  displayName: 'Path do arquivo de configuracao dentro de SecurityFiles'
+  type: string
+  default: 'Cep'
+- name: newImage
+  displayName: 'Criar nova imagem ?'
+  type: boolean
+  default: true
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: SharedKernel/pipelines-store
+    endpoint: SharedProjects-Repos
+
+trigger:
+  branches:
+    include:
+      - qas
+      - main
+pr:
+  branches:
+    include:
+      - refs/*
+
+variables:
+  - template: variables/global.yml@templates
+
+
+stages:
+- stage: "Build"
+  displayName: "Build Projects"
+
+  jobs:
+  - job: "BuildPackage"
+    displayName: "Build & package artifacts"
+
+    variables:
+      - name: buildConfiguration
+        value: "Release"
+
+    pool:
+      vmimage: $(vmImageName)
+
+
+    steps:
+      - template: pipeline-templates/build-dotnetcore-docker.yml@templates
+        parameters:
+          solution: "**/*.sln"
+          buildConfiguration: ${{ variables.buildConfiguration }}
+          ${{ if eq(lower(variables['SONAR']), 'true') }}:
+            sonar: true
+          ${{ else }}:
+            sonar: false
+
+- template: pipeline-templates/deploy-common-docker.yml@templates
+  parameters:
+    imageName: ${{ parameters.imageName }}
+    containerName: ${{ parameters.containerName }}
+    imageTag: ${{ parameters.imageTag }}
+    configApp: ${{ parameters.configApp }}
+    envFilePath: ${{ parameters.envFilePath }}
+    PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
+    newImage: ${{ parameters.newImage }}
