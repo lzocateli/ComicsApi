@@ -25,7 +25,6 @@ podman build -t lzocateli/nome-da-aplicacao:9.9.9 -f .
 - Comando para executar o container no servidor:
 
 ```bash
-# Com usuario brazildevops logado
 sudo su -
 
 podman run -d \
@@ -40,7 +39,6 @@ podman run -d \
 Para executar um container já existente alterando o entrypoint para o prompt /bin/bash  
 **Note que sera necessario o arquivo com as variaveis de ambiente da aplicação**
 ```bash
-# Com usuario brazildevops logado
 sudo su -
 
 podman exec -it --env-file /userapps/tmp/CepApi/env.prd CepApi ls -la /app
@@ -72,7 +70,7 @@ dotnet tool install dotnet-ef --version 3.1.26
 - Para gerar as classes baseado nas tabelas (Execute esses comandos na pasta onde esta a solution):: use o caractere ` antes de $ caso sua senha possua esse caractere
 
 ```bash
-dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=Z1P3;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t CEP --use-database-names --context-dir Data -o Models
+dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=MEUBANCO;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t CEP --use-database-names --context-dir Data -o Models
 ```
 
 - Para gerar as classes de migrations e o script (Execute esses comandos na pasta onde esta a solution):
@@ -108,7 +106,7 @@ dotnet ef migrations script -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV
 dotnet user-secrets init --id Global -p .\src\NUV.Cep.Api\NUV.Cep.Api.csproj
 ```` 
 - Local onde é criado o arquivo no windows (no linux é igual, dentro da $HOME)  
-C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\Cep\secrets.json
+C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\NUV.Cep.Api\secrets.json
 
 - Copie ou crie sua ConnectionStrings ou qualquer outra chave, dentro do arquivo criado, ele ira substituir as chaves existentes no appsettings.Development.json ou incluir caso não exista, apenas em tempo de execução.  
 
