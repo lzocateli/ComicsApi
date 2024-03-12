@@ -30,6 +30,11 @@ resources:
     type: git
     name: SharedKernel/pipelines-store
     endpoint: SharedProjects-Repos
+  - repository: template-security-files
+    type: git
+    name: SharedKernel/SecurityFiles
+    endpoint: SharedProjects-Repos
+
 
 trigger:
   branches:
