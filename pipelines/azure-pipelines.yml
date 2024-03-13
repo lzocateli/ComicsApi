@@ -71,7 +71,7 @@ stages:
         parameters:
           solution: "**/*.sln"
           buildConfiguration: ${{ variables.buildConfiguration }}
-#          reposytoryWork: 'CepApi'
+          reposytoryWork: 'CepApi'
           ${{ if eq(lower(variables['SONAR']), 'true') }}:
             sonar: true
           ${{ else }}:
