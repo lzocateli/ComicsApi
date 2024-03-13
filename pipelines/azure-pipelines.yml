@@ -30,6 +30,11 @@ resources:
     type: git
     name: SharedKernel/pipelines-store
     endpoint: SharedProjects-Repos
+  - repository: template-security-files
+    type: git
+    name: SharedKernel/SecurityFiles
+    endpoint: SharedProjects-Repos
+
 
 trigger:
   branches:
@@ -56,6 +61,8 @@ stages:
     variables:
       - name: buildConfiguration
         value: "Release"
+      - name: reposytoryWork
+        value: "CepApi"
 
     pool:
       vmimage: $(vmImageName)
@@ -80,3 +87,4 @@ stages:
     envFilePath: ${{ parameters.envFilePath }}
     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
     newImage: ${{ parameters.newImage }}
+    reposytoryWork: "CepApi"
