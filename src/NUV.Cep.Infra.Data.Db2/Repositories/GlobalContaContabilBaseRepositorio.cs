@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using CBL.Common.Infra.Data.Repositories;
-using NUV.Cep.Infra.Data.Db2.Context;
-using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace NUV.Cep.Infra.Data.Repositories
 {
     public abstract class GlobalContaContabilBaseRepositorio : BaseRepositoryReadOnly<object>

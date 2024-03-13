@@ -1,10 +1,4 @@
-﻿using NUV.Cep.Infra.Data.Context;
-using NUV.Cep.Infra.Data.Db2.Context;
-using IBM.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Nuuvify.CommonPack.UnitOfWork;
-using System;
+﻿
 
 namespace CBL.Startup.Custom.Setups
 {

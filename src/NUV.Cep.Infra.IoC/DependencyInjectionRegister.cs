@@ -1,12 +1,5 @@
-﻿using NUV.Cep.Infra.Data.Interfaces;
-using NUV.Cep.Infra.Data.Repositories;
-using NUV.Cep.Infra.Data.Db2.Interfaces;
+﻿using NUV.Cep.Infra.Data.Db2.Interfaces;
 using NUV.Cep.Infra.Data.Db2.Repositories;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Nuuvify.CommonPack.Middleware;
-using Nuuvify.CommonPack.Middleware.Abstraction;
-using System.Reflection;
 
 namespace NUV.Cep.Infra.IoC
 {
@@ -21,9 +14,10 @@ namespace NUV.Cep.Infra.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.Load("NUV.Cep.Infra.IoC"));
-            services.AddMediatR(Assembly.Load("NUV.Cep.Infra.IoC"));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.Load("NUV.Cep.Infra.IoC")));
 
-            services.AddScoped<IGlobalCentroDeCustoRepositorio, GlobalCentroDeCustoRepositorio>();
+
+            // services.AddScoped<IGlobalCentroDeCustoRepositorio, GlobalCentroDeCustoRepositorio>();
             services.AddScoped<IEmbalagemRepositorio, EmbalagemRepositorio>();
 
             services.AddScoped<IConfigurationCustom, ConfigurationCustom>();

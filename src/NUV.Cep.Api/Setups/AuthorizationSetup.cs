@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Nuuvify.CommonPack.Security.Jwt;
-using Nuuvify.CommonPack.Security.JwtOpenId;
-using System.Collections.Generic;
+﻿using Nuuvify.CommonPack.Security.JwtOpenId;
 
 namespace CBL.Startup.Custom.Setups
 {

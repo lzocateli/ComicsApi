@@ -1,14 +1,4 @@
-﻿using NUV.Cep.Infra.Data.Db2.DomainModel;
-using EntityFramework.Exceptions.Common;
-using EntityFramework.Exceptions.Db2;
-using IBM.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Nuuvify.CommonPack.Middleware.Abstraction;
-using Nuuvify.CommonPack.UnitOfWork;
-using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
+﻿
 
 namespace NUV.Cep.Infra.Data.Db2.Context
 {

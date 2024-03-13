@@ -1,20 +1,6 @@
-﻿using System;
-using NUV.Cep.Infra.IoC;
+﻿using NUV.Cep.Infra.IoC;
 using NUV.Cep.Infra.IoC.Configurations;
 using CBL.Startup.Custom.Setups;
-using Microsoft.ApplicationInsights.DependencyCollector;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Nuuvify.CommonPack.Email;
-using Nuuvify.CommonPack.Middleware;
-using Nuuvify.CommonPack.Middleware.Handle;
-using Nuuvify.CommonPack.OpenApi;
-using Nuuvify.CommonPack.StandardHttpClient;
-using Nuuvify.CommonPack.StandardHttpClient.WebServices;
 
 namespace CBL.Startup.Custom
 {
@@ -58,7 +44,7 @@ namespace CBL.Startup.Custom
 
             DependencyInjectionRegister.RegisterServices(services);
 
-            var testVault = Configuration.GetSection("ApplicationInsights:InstrumentationKey")?.Value;
+            var testVault = Configuration.GetSection("ApplicationInsights:ConnectionString")?.Value;
             Console.WriteLine($"Get vault access is: {!string.IsNullOrWhiteSpace(testVault)}");
 
         }

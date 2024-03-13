@@ -1,6 +1,4 @@
-﻿using Nuuvify.CommonPack.Domain;
-using System;
-
+﻿
 namespace NUV.Cep.Infra.Data.Db2.DomainModel
 {
     public class Embalagem : DomainEntity

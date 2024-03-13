@@ -1,7 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-
-namespace CBL.Common.IoC
+﻿namespace CBL.Common.IoC
 {
     /// <summary>
     /// Essa classe é necessario para executar os programas no Linux com uso de proxy <br/>

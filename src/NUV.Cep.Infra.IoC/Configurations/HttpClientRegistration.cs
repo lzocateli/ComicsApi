@@ -1,8 +1,5 @@
-﻿using CBL.Common.IoC;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Nuuvify.CommonPack.StandardHttpClient;
-using System.Net;
+﻿
+using CBL.Common.IoC;
 
 namespace NUV.Cep.Infra.IoC.Configurations
 {

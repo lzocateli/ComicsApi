@@ -1,6 +1,3 @@
-using Microsoft.Extensions.Hosting;
-using System;
-
 namespace CBL.Startup.Custom
 {
     /// <summary>

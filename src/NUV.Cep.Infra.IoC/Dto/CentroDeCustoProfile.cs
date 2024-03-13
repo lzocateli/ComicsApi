@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using NUV.Cep.Infra.Data.Commands;
-using NUV.Cep.Infra.Data.DomainModel;
-using Nuuvify.CommonPack.UnitOfWork.Abstraction.Collections;
+﻿
 
 namespace NUV.Cep.Infra.IoC.Dto
 {
@@ -9,10 +6,10 @@ namespace NUV.Cep.Infra.IoC.Dto
     {
         public CentroDeCustoProfile()
         {
-            CreateMap<CentroDeCustoSumary, GlobalCentroDeCustoFacilityQueryResult>();
-            CreateMap<GlobalCentroDeCusto, GlobalCentroDeCustoQueryResult>();
+            // CreateMap<CentroDeCustoSumary, GlobalCentroDeCustoFacilityQueryResult>();
+            // CreateMap<GlobalCentroDeCusto, GlobalCentroDeCustoQueryResult>();
 
-            CreateMap<PagedList<GlobalCentroDeCusto>, PagedList<GlobalCentroDeCustoQueryResult>>();
+            // CreateMap<PagedList<GlobalCentroDeCusto>, PagedList<GlobalCentroDeCustoQueryResult>>();
         }
     }
 }

@@ -1,17 +1,4 @@
-﻿using NUV.Cep.Infra.Data.Commands;
-using NUV.Cep.Infra.Data.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Nuuvify.CommonPack.Extensions.Notificator;
-using Nuuvify.CommonPack.Middleware.Abstraction.Results;
-using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static CBL.Startup.Custom.Setups.AuthorizationSetup;
+﻿
 
 namespace NUV.Cep.Api.Controllers
 {
@@ -19,13 +6,12 @@ namespace NUV.Cep.Api.Controllers
     [Route("v{api-version:apiVersion}/[controller]")]
     public class GlobalSerialNumberPrefixController : BaseController
     {
-        private readonly IGlobalSerialNumberPrefixRepositorio _serialNumerPrefixRepositorio;
 
-        public GlobalSerialNumberPrefixController(IGlobalSerialNumberPrefixRepositorio serialNumerPrefixRepositorio,
+        public GlobalSerialNumberPrefixController(
             ILogger<GlobalSerialNumberPrefixController> logger)
             : base(logger)
         {
-            _serialNumerPrefixRepositorio = serialNumerPrefixRepositorio;
+
         }
 
         /// <summary>
@@ -37,7 +23,7 @@ namespace NUV.Cep.Api.Controllers
         /// /// <param name="serialNumberPrefix">Prefixo do Numero de Série</param>
         /// <returns></returns>
         [Produces("application/json")]
-        [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<GlobalSerialNumberPrefixResult>), description: "Codigo da Familia do Serial Number Prefix")]
+        [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<object>), description: "Codigo da Familia do Serial Number Prefix")]
         [SwaggerResponse(204, description: "Codigo de retorno quando o metodo processou a solicitação do client, mas o retorno é nulo")]
         [SwaggerResponse(422, type: typeof(IEnumerable<ReturnStandardErrors<NotificationR>>), description: "Codigo de retorno quando o metodo processou a solicitação do client, com notificações")]
         [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
@@ -45,13 +31,16 @@ namespace NUV.Cep.Api.Controllers
         [HttpGet, MapToApiVersion("1.0")]
         [Authorize(Policy = PolicyGroupConstants.GroupUsers)]
         [Route("serialNumberPrefix")]
-        public async Task<IActionResult> FamilyCodeByMachineSerialNumber([FromQuery] string serialNumberPrefix)
+        public async Task<IActionResult> FamilyCodeByMachineSerialNumber(
+            [FromQuery] string serialNumberPrefix)
         {
-            var familyCode = await _serialNumerPrefixRepositorio.FamilyCodeByMachineSerialNumber(serialNumberPrefix);
+            // var familyCode = await _serialNumerPrefixRepositorio.FamilyCodeByMachineSerialNumber(serialNumberPrefix);
+
+            object resultAction = null;
 
             return await Response(new StatusCodeResult(StatusCodes.Status200OK),
                 new StatusCodeResult(StatusCodes.Status422UnprocessableEntity),
-                familyCode,
+                resultAction,
                 null);
         }
     }

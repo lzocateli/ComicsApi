@@ -1,17 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Nuuvify.CommonPack.Middleware.Abstraction;
-using Nuuvify.CommonPack.Middleware.Abstraction.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static CBL.Startup.Custom.Setups.AuthorizationSetup;
-
-namespace CBL.Cws.Api.v1.Controllers
+﻿namespace CBL.Cws.Api.v1.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     public class HomeController : Controller

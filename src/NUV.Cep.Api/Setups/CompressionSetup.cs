@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.Extensions.DependencyInjection;
-using System.IO.Compression;
-
-namespace CBL.Startup.Custom.Setups
+﻿namespace CBL.Startup.Custom.Setups
 {
     public static class CompressionSetup
     {
