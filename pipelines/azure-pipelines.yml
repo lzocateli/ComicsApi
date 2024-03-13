@@ -61,7 +61,7 @@ stages:
     variables:
       - name: buildConfiguration
         value: "Release"
-      - name: pipelineRepoName
+      - name: reposytoryWork
         value: "CepApi"
 
     pool:
@@ -87,5 +87,4 @@ stages:
     envFilePath: ${{ parameters.envFilePath }}
     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
     newImage: ${{ parameters.newImage }}
-    reposytoryWork: ${{ variables.pipelineRepoName }}
-    #${{ variables.reposytoryWork }}
+    reposytoryWork: "CepApi"
