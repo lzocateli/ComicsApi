@@ -1,4 +1,4 @@
-FROM lzocateli/dotnet-sdk-3.1.426-focal-amd64:1.0.0
+FROM lzocateli/dotnet-sdk:3.1.426-focal-amd64
 
 ARG PathApp=/workspaces
 
