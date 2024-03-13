@@ -62,30 +62,27 @@ stages:
       - name: buildConfiguration
         value: "Release"
 
-    # pool:
-    #   vmimage: $(vmImageName)
-    pool: 
-      name: nuuve-agents
-      demands:
-      - Agent.OS -equals Linux
+    pool:
+      vmimage: $(vmImageName)
+
 
     steps:
       - template: pipeline-templates/build-dotnetcore-docker.yml@templates
         parameters:
           solution: "**/*.sln"
           buildConfiguration: ${{ variables.buildConfiguration }}
-          reposytoryWork: 'CepApi'
+#          reposytoryWork: 'CepApi'
           ${{ if eq(lower(variables['SONAR']), 'true') }}:
             sonar: true
           ${{ else }}:
             sonar: false
 
-# - template: pipeline-templates/deploy-common-docker.yml@templates
-#   parameters:
-#     imageName: ${{ parameters.imageName }}
-#     containerName: ${{ parameters.containerName }}
-#     imageTag: ${{ parameters.imageTag }}
-#     configApp: ${{ parameters.configApp }}
-#     envFilePath: ${{ parameters.envFilePath }}
-#     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
-#     newImage: ${{ parameters.newImage }}
+- template: pipeline-templates/deploy-common-docker.yml@templates
+  parameters:
+    imageName: ${{ parameters.imageName }}
+    containerName: ${{ parameters.containerName }}
+    imageTag: ${{ parameters.imageTag }}
+    configApp: ${{ parameters.configApp }}
+    envFilePath: ${{ parameters.envFilePath }}
+    PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
+    newImage: ${{ parameters.newImage }}
