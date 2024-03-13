@@ -61,7 +61,7 @@ stages:
     variables:
       - name: buildConfiguration
         value: "Release"
-      - name: reposytoryWork
+      - name: pipelineRepoName
         value: "CepApi"
 
     pool:
@@ -73,7 +73,6 @@ stages:
         parameters:
           solution: "**/*.sln"
           buildConfiguration: ${{ variables.buildConfiguration }}
-          #reposytoryWork: 'CepApi'
           ${{ if eq(lower(variables['SONAR']), 'true') }}:
             sonar: true
           ${{ else }}:
@@ -88,5 +87,5 @@ stages:
     envFilePath: ${{ parameters.envFilePath }}
     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
     newImage: ${{ parameters.newImage }}
-    reposytoryWork: "CepApi"
+    reposytoryWork: ${{ variables.pipelineRepoName }}
     #${{ variables.reposytoryWork }}
