@@ -88,4 +88,4 @@ stages:
     envFilePath: ${{ parameters.envFilePath }}
     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
     newImage: ${{ parameters.newImage }}
-#    reposytoryWork: 'CepApi'
+    reposytoryWork: $reposytoryWork
