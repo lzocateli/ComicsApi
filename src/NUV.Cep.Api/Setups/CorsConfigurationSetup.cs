@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace CBL.Startup.Custom.Setups
+﻿namespace CBL.Startup.Custom.Setups
 {
     public static class CorsConfigurationSetup
     {

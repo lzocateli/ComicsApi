@@ -1,13 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Nuuvify.CommonPack.Middleware.Abstraction;
-using Nuuvify.CommonPack.UnitOfWork;
-using System;
-using System.Diagnostics;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
+﻿
 namespace NUV.Cep.Infra.Data.Sql.Context
 {
     public class SqlDbContext : DbContext

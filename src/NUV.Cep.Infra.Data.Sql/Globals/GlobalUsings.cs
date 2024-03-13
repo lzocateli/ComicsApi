@@ -1,0 +1,13 @@
+global using AutoMapper;
+global using CBL.Common.Infra.Data.Repositories;
+global using Microsoft.EntityFrameworkCore;
+global using Nuuvify.CommonPack.Extensions.Notificator;
+global using System.Collections.Generic;
+global using System.Text;
+global using System.Threading.Tasks;
+global using Microsoft.EntityFrameworkCore.ChangeTracking;
+global using Nuuvify.CommonPack.Middleware.Abstraction;
+global using Nuuvify.CommonPack.UnitOfWork;
+global using System;
+global using System.Diagnostics;
+global using System.Threading;

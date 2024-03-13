@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using Nuuvify.CommonPack.Security.Abstraction;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Nuuvify.CommonPack.Extensions.Notificator;
-using Nuuvify.CommonPack.Middleware.Abstraction;
-using Nuuvify.CommonPack.UnitOfWork;
-using Nuuvify.CommonPack.UnitOfWork.Abstraction.Interfaces;
-using System.Collections.Generic;
+﻿
 
 namespace CBL.Common.Infra.Data.Repositories
 {

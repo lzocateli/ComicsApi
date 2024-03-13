@@ -1,15 +1,5 @@
-﻿using Azure.Core;
-using Azure.Identity;
-using Common.Helpers;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Nuuvify.CommonPack.Extensions.Implementation;
-using System;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using Common.Helpers;
+
 
 namespace CBL.Startup.Custom
 {

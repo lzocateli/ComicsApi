@@ -2,7 +2,7 @@
 # https://community.ibm.com/community/user/hybriddatamanagement/blogs/vishwa-hs1/2020/07/24/creating-docker-on-linux-hosted-db2-net-applicati
 # https://stackoverflow.com/questions/47657658/unable-to-load-dll-libdb2-so-when-establishing-a-db2-connection-with-net-core
 
-FROM lzocateli/dotnet-sdk-3.1.426-focal-amd64:1.0.0 AS build
+FROM lzocateli/dotnet-sdk:8.0.202-jammy-amd64 AS build
 
 WORKDIR /buildapp
 
@@ -14,7 +14,7 @@ RUN dotnet restore --configfile NuGet.Config
 RUN dotnet publish -c release -o /tmp/outapp --self-contained false --no-restore
 
 
-FROM lzocateli/aspnet-3.1.32-focal-amd64:1.0.0
+FROM lzocateli/dotnet-aspnet:8.0.3-jammy-amd64
 RUN apt update -y && apt upgrade -y && apt install -y libxml2-dev
 
 

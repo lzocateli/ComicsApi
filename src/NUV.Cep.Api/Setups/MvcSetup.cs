@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.Extensions.DependencyInjection;
-using Nuuvify.CommonPack.Middleware.Filters;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
+﻿
 namespace CBL.Startup.Custom.Setups
 {
     public static class MvcSetup
@@ -18,7 +12,7 @@ namespace CBL.Startup.Custom.Setups
             })
             .AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             })

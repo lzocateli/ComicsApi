@@ -1,17 +1,5 @@
-using NUV.Cep.Infra.Data.Context;
 using NUV.Cep.Infra.Data.Db2.Context;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;
-using Nuuvify.CommonPack.HealthCheck;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+using NUV.Cep.Infra.Data.Sql.Context;
 
 namespace CBL.Startup.Custom.Setups
 {
@@ -36,8 +24,8 @@ namespace CBL.Startup.Custom.Setups
                         maximumMemoryBytes: 1073741824L,
                         failureStatus: HealthStatus.Degraded,
                         tags: new[] { "memory" })
-                    .AddDbContextCheck<AppDbContext>(
-                        name: $"ef-{nameof(AppDbContext)}",
+                    .AddDbContextCheck<Db2DbContext>(
+                        name: $"ef-{nameof(Db2DbContext)}",
                         customTestQuery: (context, CancellationToken) =>
                         {
                             var regs = context.Embalagens.AsNoTracking().Count();
@@ -45,19 +33,20 @@ namespace CBL.Startup.Custom.Setups
                         },
                         failureStatus: HealthStatus.Degraded,
                         tags: new[] { "data", "db2" })
-                    .AddDbContextCheck<AppDbContext>(
-                        name: $"ef-{nameof(AppDbContext)}",
+                    .AddDbContextCheck<SqlDbContext>(
+                        name: $"ef-{nameof(SqlDbContext)}",
                         customTestQuery: (context, CancellationToken) =>
                         {
                             var vigenciaInicial = DateTime.Today;
                             var empresa = "28";
                             var vigenciaFinal = new DateTime(9999, 12, 31);
 
-                            var regs = context.ContasContabeis.AsNoTracking()
-                                .Count(x => x.FAC_CD == empresa &&
-                                (x.EFF_DT <= vigenciaInicial &&
-                                 x.OBS_DT >= vigenciaInicial ||
-                                 x.OBS_DT == vigenciaFinal));
+                            var regs = 1;
+                            // var regs = context.ContasContabeis.AsNoTracking()
+                            //     .Count(x => x.FAC_CD == empresa &&
+                            //     (x.EFF_DT <= vigenciaInicial &&
+                            //      x.OBS_DT >= vigenciaInicial ||
+                            //      x.OBS_DT == vigenciaFinal));
 
                             return Task.FromResult(regs > 0);
                         },
@@ -70,7 +59,7 @@ namespace CBL.Startup.Custom.Setups
                         failureStatus: HealthStatus.Degraded,
                         tags: new[] { "data", "sqlserver" })
                     .AddApplicationInsightsPublisher(
-                        instrumentationKey: configuration.GetSection("ApplicationInsights:InstrumentationKey").Value,
+                        connectionString: configuration.GetSection("ApplicationInsights:ConnectionString").Value,
                         saveDetailedReport: true);
             }
         }

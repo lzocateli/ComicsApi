@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.Globalization;
-
-namespace CBL.Startup.Custom.Setups
+﻿namespace CBL.Startup.Custom.Setups
 {
     public static class LocalizationSetup
     {

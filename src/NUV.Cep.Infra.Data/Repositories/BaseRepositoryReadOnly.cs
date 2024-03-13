@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Nuuvify.CommonPack.Extensions.Notificator;
-using Nuuvify.CommonPack.UnitOfWork;
-using System.Collections.Generic;
-
+﻿
 namespace CBL.Common.Infra.Data.Repositories
 {
     public abstract class BaseRepositoryReadOnly<TEntity> : RepositoryReadOnly<TEntity> where TEntity : class
