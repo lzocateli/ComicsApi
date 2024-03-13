@@ -1,0 +1,11 @@
+using AutoMapper;
+using CBL.Common.Infra.Data.Repositories;
+using NUV.Cep.Infra.Data.Db2.Commands;
+using NUV.Cep.Infra.Data.Db2.Context;
+using NUV.Cep.Infra.Data.Db2.DomainModel;
+using NUV.Cep.Infra.Data.Db2.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Nuuvify.CommonPack.Extensions.Notificator;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
