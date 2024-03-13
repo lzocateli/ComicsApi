@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Nuuvify.CommonPack.UnitOfWork;
 
-namespace NUV.Cep.Infra.Data.Db2.Configs.EF.AppDbContextZ1P2
+namespace NUV.Cep.Infra.Data.Db2.Configs.EF.AppDbContext
 {
     public class EmbalagemConfig : EntityConfiguration<Embalagem>
     {

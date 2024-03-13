@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj" />
     <ProjectReference Include="..\NUV.Cep.Infra.Data.Db2\NUV.Cep.Infra.Data.Db2.csproj" />
+    <ProjectReference Include="..\NUV.Cep.Infra.Data.Sql\NUV.Cep.Infra.Data.Sql.csproj" />
   </ItemGroup>
 
 </Project>

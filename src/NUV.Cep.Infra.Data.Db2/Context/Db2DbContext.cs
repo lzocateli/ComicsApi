@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NUV.Cep.Infra.Data.Db2.Context
 {
-    public class AppDbContextZ1P2 : DbContext
+    public class Db2DbContext : DbContext
     {
         public readonly IConfigurationCustom Configuration;
         public readonly string ownerDB;
@@ -23,20 +23,20 @@ namespace NUV.Cep.Infra.Data.Db2.Context
         /// criam view no banco de dados
         /// </summary>
         /// <param name="configuration"></param>
-        public AppDbContextZ1P2(IConfigurationCustom configuration)
+        public Db2DbContext(IConfigurationCustom configuration)
         {
             Configuration = configuration;
 
-            ownerDB = Configuration.GetSectionValue("AppConfig:OwnerDB-FW:Schema");
+            ownerDB = Configuration.GetSectionValue("AppConfig:OwnerDB:Schema");
         }
 
-        public AppDbContextZ1P2(DbContextOptions<AppDbContextZ1P2> options,
+        public Db2DbContext(DbContextOptions<Db2DbContext> options,
             IConfigurationCustom configuration)
             : base(options)
         {
             Configuration = configuration;
 
-            ownerDB = Configuration.GetSectionValue("AppConfig:OwnerDB-FW:Schema");
+            ownerDB = Configuration.GetSectionValue("AppConfig:OwnerDB:Schema");
         }
 
         public virtual DbSet<Embalagem> Embalagens { get; set; }
@@ -51,8 +51,8 @@ namespace NUV.Cep.Infra.Data.Db2.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var schema = Configuration.GetSectionValue("AppConfig:OwnerDB-FW:Schema");
-                var cnn = Configuration.GetSectionValue("AppConfig:OwnerDB-FW:Cnn");
+                var schema = Configuration.GetSectionValue("AppConfig:OwnerDB:Schema");
+                var cnn = Configuration.GetSectionValue("AppConfig:OwnerDB:Cnn");
 
                 optionsBuilder.UseDb2(Configuration.GetConnectionString(cnn), p =>
                 {
@@ -62,7 +62,7 @@ namespace NUV.Cep.Infra.Data.Db2.Context
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging();
 
-                Console.WriteLine($"***** {nameof(AppDbContextZ1P2)} {schema} *****");
+                Console.WriteLine($"***** {nameof(Db2DbContext)} {schema} *****");
             }
 
             optionsBuilder.UseExceptionProcessor();
@@ -73,8 +73,8 @@ namespace NUV.Cep.Infra.Data.Db2.Context
             modelBuilder.SetDatabaseProviderName(Database);
 
             modelBuilder.HasDefaultSchema(ownerDB);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContextZ1P2).Assembly,
-                predicate: n => n.Namespace.EndsWith(nameof(AppDbContextZ1P2)));
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Db2DbContext).Assembly,
+                predicate: n => n.Namespace.EndsWith(nameof(Db2DbContext)));
 
             modelBuilder.IgnoreValueObject();
 

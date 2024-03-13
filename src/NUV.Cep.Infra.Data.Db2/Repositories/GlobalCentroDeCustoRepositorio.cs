@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CBL.Common.Infra.Data.Repositories;
 using NUV.Cep.Infra.Data.Commands;
-using NUV.Cep.Infra.Data.Context;
+using NUV.Cep.Infra.Data.Db2.Context;
 using NUV.Cep.Infra.Data.DomainModel;
 using NUV.Cep.Infra.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ namespace NUV.Cep.Infra.Data.Repositories
 {
     public class GlobalCentroDeCustoRepositorio : BaseRepositoryReadOnly<GlobalCentroDeCusto>, IGlobalCentroDeCustoRepositorio
     {
-        public GlobalCentroDeCustoRepositorio(AppDbContext dbContext,
+        public GlobalCentroDeCustoRepositorio(Db2DbContext dbContext,
             IMapper mapper)
             : base(dbContext, mapper)
         {

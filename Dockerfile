@@ -18,10 +18,10 @@ FROM lzocateli/aspnet-3.1.32-focal-amd64:1.0.0
 RUN apt update -y && apt upgrade -y && apt install -y libxml2-dev
 
 
-ARG UserApp=nonroot
 ARG TZ=America/Sao_Paulo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ >/etc/timezone
 
+ARG UserApp=nonroot
 RUN useradd -ms /bin/bash $UserApp 
 USER $UserApp
 

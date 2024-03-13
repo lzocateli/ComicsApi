@@ -36,8 +36,8 @@ namespace CBL.Startup.Custom.Setups
                         maximumMemoryBytes: 1073741824L,
                         failureStatus: HealthStatus.Degraded,
                         tags: new[] { "memory" })
-                    .AddDbContextCheck<AppDbContextZ1P2>(
-                        name: $"ef-{nameof(AppDbContextZ1P2)}",
+                    .AddDbContextCheck<AppDbContext>(
+                        name: $"ef-{nameof(AppDbContext)}",
                         customTestQuery: (context, CancellationToken) =>
                         {
                             var regs = context.Embalagens.AsNoTracking().Count();

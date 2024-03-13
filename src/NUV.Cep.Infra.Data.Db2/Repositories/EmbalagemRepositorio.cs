@@ -15,12 +15,12 @@ namespace NUV.Cep.Infra.Data.Db2.Repositories
     public class EmbalagemRepositorio : BaseRepositoryReadOnly<Embalagem>, IEmbalagemRepositorio
     {
         public EmbalagemRepositorio(
-            AppDbContextZ1P2 dbContext,
+            Db2DbContext dbContext,
             IMapper mapper)
             : base(dbContext, mapper)
         {
             ownerDB = dbContext.ownerDB;
-            var cnn = dbContext.Configuration.GetSectionValue("AppConfig:OwnerDB-FW:Cnn");
+            var cnn = dbContext.Configuration.GetSectionValue("AppConfig:OwnerDB:Cnn");
             SetDbConnection(dbContext?.Database.GetDbConnection(), dbContext.Configuration.GetConnectionString(cnn));
         }
 
