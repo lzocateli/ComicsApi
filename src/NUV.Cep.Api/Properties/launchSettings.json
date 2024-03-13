@@ -9,7 +9,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Cep.Api/env.qas",
-      "workingDirectory": "$(ProjectDir)/bin/Debug/netcoreapp3.1/win-x64/",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
       "applicationUrl": "http://localhost:5000/"
     },
     "Api-QAS": {
@@ -20,7 +20,7 @@
         "ASPNETCORE_ENVIRONMENT": "Quality"
       },
       "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Cep.Api/env.qas",
-      "workingDirectory": "$(ProjectDir)/bin/Debug/netcoreapp3.1/win-x64/",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
       "applicationUrl": "http://localhost:5000/"
     },
     "Api-PRD": {
@@ -31,7 +31,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Cep.Api/env.prd",
-      "workingDirectory": "$(ProjectDir)/bin/Debug/netcoreapp3.1/win-x64/",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
       "applicationUrl": "http://localhost:5000/"
     }
   }
