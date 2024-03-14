@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Api-DEV": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "docs",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Comics.Api/env.qas",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
+      "applicationUrl": "http://localhost:5000/"
+    },
+    "Api-QAS": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "docs",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Quality"
+      },
+      "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Comics.Api/env.qas",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
+      "applicationUrl": "http://localhost:5000/"
+    },
+    "Api-PRD": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "launchUrl": "docs",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "commandLineArgs": "--env=%USERPROFILE%/AppData/Roaming/Microsoft/UserSecrets/NUV.Comics.Api/env.prd",
+      "workingDirectory": "$(ProjectDir)/bin/Debug/net8.0/win-x64/",
+      "applicationUrl": "http://localhost:5000/"
+    }
+  }
+}

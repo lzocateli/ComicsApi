@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nuuvify.CommonPack.EF.ExComicstions.Db2" Version="1.7.2" />
+    <PackageReference Include="IBM.EntityFrameworkCore" Version="8.0.0.200" Condition="'$(os)' == 'Windows_NT'" />
+    <PackageReference Include="IBM.EntityFrameworkCore-lnx" Version="8.0.0.200" Condition="'$(os)' == 'UNIX'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

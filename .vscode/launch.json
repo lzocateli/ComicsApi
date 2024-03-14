@@ -18,16 +18,16 @@
             "preLaunchTask": "build",
             "windows": {
                 "console": "externalTerminal",
-                "program": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/net8.0/win-x64/NUV.Cep.Api.dll",
+                "program": "${workspaceFolder}/src/NUV.Comics.Api/bin/Debug/net8.0/win-x64/NUV.Comics.Api.dll",
                 "args": [],
-                "cwd": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/net8.0/win-x64/",
-                "envFile": "${userHome}/AppData/Roaming/Microsoft/UserSecrets/NUV.Cep.Api/env.qas",
+                "cwd": "${workspaceFolder}/src/NUV.Comics.Api/bin/Debug/net8.0/win-x64/",
+                "envFile": "${userHome}/AppData/Roaming/Microsoft/UserSecrets/NUV.Comics.Api/env.qas",
             },
             "linux": {
-                "program": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/net8.0/linux-x64/NUV.Cep.Api.dll",
+                "program": "${workspaceFolder}/src/NUV.Comics.Api/bin/Debug/net8.0/linux-x64/NUV.Comics.Api.dll",
                 "args": [],
-                "cwd": "${workspaceFolder}/src/NUV.Cep.Api/bin/Debug/net8.0/linux-x64/",
-                "envFile": "${userHome}/.microsoft/usersecrets/NUV.Cep.Api/env.qas",
+                "cwd": "${workspaceFolder}/src/NUV.Comics.Api/bin/Debug/net8.0/linux-x64/",
+                "envFile": "${userHome}/.microsoft/usersecrets/NUV.Comics.Api/env.qas",
             },
             "stopAtEntry": false,
             "enableStepFiltering": false,
@@ -38,7 +38,7 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:5002",
+                "ASPNETCORE_URLS": "http://localhost:5000",
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

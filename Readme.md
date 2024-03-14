@@ -29,11 +29,11 @@ sudo su -
 
 podman run -d \
 	-e DOTNET_ENVIRONMENT=Production \
-	--env-file /userapps/tmp/CepApi/env.prd \
+	--env-file /userapps/tmp/ComicsApi/env.prd \
 	--network=lzo \
-	--network-alias=CepApi \
-	--name CepApi \
-	lzocateli/nuv.cep.api:9.9.9
+	--network-alias=ComicsApi \
+	--name ComicsApi \
+	lzocateli/nuv.Comics.api:9.9.9
 ```
 
 Para executar um container já existente alterando o entrypoint para o prompt /bin/bash  
@@ -41,7 +41,7 @@ Para executar um container já existente alterando o entrypoint para o prompt /b
 ```bash
 sudo su -
 
-podman exec -it --env-file /userapps/tmp/CepApi/env.prd CepApi ls -la /app
+podman exec -it --env-file /userapps/tmp/ComicsApi/env.prd ComicsApi ls -la /app
 ```
 
 ----
@@ -51,8 +51,8 @@ podman exec -it --env-file /userapps/tmp/CepApi/env.prd CepApi ls -la /app
 
 | Servidor | Ambiente | Container Name | Container Image | Dns        |
 | ---      | ---      | ---            | ---             | ---        |
-| `seuservidor.com` | Qualidade | CepApi | lzocateli/NUV.Cep.api:9.9.9-preview.22031603 | cep-api.zocate.li |
-| `seuservidor.com` | Produção  | CepApi | lzocateli/NUV.Cep.api:9.9.9 | cep-api.zocate.li |
+| `seuservidor.com` | Qualidade | ComicsApi | lzocateli/NUV.Comics.api:9.9.9-preview.22031603 | Comics-api.zocate.li |
+| `seuservidor.com` | Produção  | ComicsApi | lzocateli/NUV.Comics.api:9.9.9 | Comics-api.zocate.li |
 
 
 ## EF - Entity Framework [Tutorial database first](https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx) e [Documentação oficial](https://docs.microsoft.com/en-us/ef/).
@@ -70,19 +70,19 @@ dotnet tool install dotnet-ef --version 3.1.26
 - Para gerar as classes baseado nas tabelas (Execute esses comandos na pasta onde esta a solution):: use o caractere ` antes de $ caso sua senha possua esse caractere
 
 ```bash
-dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=MEUBANCO;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t CEP --use-database-names --context-dir Data -o Models
+dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=MEUBANCO;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Comics.Api\NUV.Comics.Api.csproj -p .\src\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t Comics --use-database-names --context-dir Data -o Models
 ```
 
 - Para gerar as classes de migrations e o script (Execute esses comandos na pasta onde esta a solution):
 
 ```bash
-dotnet ef migrations add CriacaoInicial -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj -c AppDbContext -v
+dotnet ef migrations add CriacaoInicial -s .\src\NUV.Comics.Api\NUV.Comics.Api.csproj -p .\src\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj -c AppDbContext -v
 ```
 - Após executar o comando acima, onde sera criada a classe "CriacaoInicial", inclua o metodo abaixo no final do metodo Up gerado pela migration, bem como CustomViewMigration, caso tenha esses objtos no seu projeto:   
 CustomFunctionMigration.UpFunctions(migrationBuilder);   
 
 ```bash
-dotnet ef migrations script -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV.Cep.Infra.Data\NUV.Cep.Infra.Data.csproj -c AppDbContext -o .\src\NUV.Cep.Infra.Data\Migrations\Script\script.sql
+dotnet ef migrations script -s .\src\NUV.Comics.Api\NUV.Comics.Api.csproj -p .\src\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj -c AppDbContext -o .\src\NUV.Comics.Infra.Data\Migrations\Script\script.sql
 ```
 ----
 
@@ -103,10 +103,10 @@ dotnet ef migrations script -s .\src\NUV.Cep.Api\NUV.Cep.Api.csproj -p .\src\NUV
 - Criando um storage local com secredos que irão substituir/adicionar chaves em appsettings.Development.json apenas em tempo de execução.
 
 ```bash
-dotnet user-secrets init --id Global -p .\src\NUV.Cep.Api\NUV.Cep.Api.csproj
+dotnet user-secrets init --id Global -p .\src\NUV.Comics.Api\NUV.Comics.Api.csproj
 ```` 
 - Local onde é criado o arquivo no windows (no linux é igual, dentro da $HOME)  
-C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\NUV.Cep.Api\secrets.json
+C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\NUV.Comics.Api\secrets.json
 
 - Copie ou crie sua ConnectionStrings ou qualquer outra chave, dentro do arquivo criado, ele ira substituir as chaves existentes no appsettings.Development.json ou incluir caso não exista, apenas em tempo de execução.  
 
@@ -120,5 +120,15 @@ C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\NUV.Cep.Api\secrets.json
 dotnet new sln -n SuaSolution (sem extenção)
 dotnet sln SuaSolution.sln remove (ls ./src/*/*.csproj)
 dotnet sln SuaSolution.sln add (ls ./src/*/*.csproj)
+```
+
+- Renomear os arquivos csproj e pastas do projeto
+```bash
+#Primeiro execute para Pastas
+find ./src -type d -name 'NUV.Cep.*' -exec /bin/bash -c 'mv "$0" "${0/Cep/Comics}"' {} \;
+#Depois para Arquivos
+find ./src -type f -name 'NUV.Cep.*' -exec /bin/bash -c 'mv "$0" "${0/Cep/Comics}"' {} \;
+#Soluction
+mv CepApi.sln ComicsApi.sln
 ```
 ----

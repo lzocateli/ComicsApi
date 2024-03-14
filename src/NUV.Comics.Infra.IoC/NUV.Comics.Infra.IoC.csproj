@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nuuvify.CommonPack.HealthCheck" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Security" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.StandardHttpClient" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.UnitOfWork" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Middleware" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.Email" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.OpenApi" Version="1.7.2" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj" />
+    <ProjectReference Include="..\NUV.Comics.Infra.Data.Db2\NUV.Comics.Infra.Data.Db2.csproj" />
+    <ProjectReference Include="..\NUV.Comics.Infra.Data.Sql\NUV.Comics.Infra.Data.Sql.csproj" />
+  </ItemGroup>
+
+</Project>
