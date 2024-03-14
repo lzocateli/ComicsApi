@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/CepApi.sln",
+                "${workspaceFolder}/ComicsApi.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -39,12 +39,12 @@
         {
             "label": "remove-publish",
             "windows": {
-                "command": "Remove-Item -Recurse c:\\software\\CepApi",
+                "command": "Remove-Item -Recurse c:\\software\\ComicsApi",
                 "type": "shell",
                 "problemMatcher": "$msCompile"
             },
             "linux": {
-                "command": "rm -rf ~/software/CepApi",
+                "command": "rm -rf ~/software/ComicsApi",
                 "type": "shell",
                 "problemMatcher": "$msCompile"
             }
@@ -73,12 +73,12 @@
                 "remove-publish",
             ],
             "windows": {
-                "command": "dotnet publish ${workspaceFolder}/CepApi.sln --configuration Release -o c:\\software\\CepApi",
+                "command": "dotnet publish ${workspaceFolder}/ComicsApi.sln --configuration Release -o c:\\software\\ComicsApi",
                 "type": "shell",
                 "problemMatcher": "$msCompile"
             },
             "linux": {
-                "command": "dotnet publish ${workspaceFolder}/CepApi.sln --configuration Release -o ~/software/CepApi",
+                "command": "dotnet publish ${workspaceFolder}/ComicsApi.sln --configuration Release -o ~/software/ComicsApi",
                 "type": "shell",
                 "problemMatcher": "$msCompile"
             },
@@ -89,7 +89,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/CepApi.sln",
+                "${workspaceFolder}/ComicsApi.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -102,7 +102,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/CepApi.sln",
+                "${workspaceFolder}/ComicsApi.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

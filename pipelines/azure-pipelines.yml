@@ -2,7 +2,7 @@ parameters:
 - name: imageName
   displayName: 'Nome da Imagem'
   type: string
-  default: 'lzocateli/NUV.Cep.Api'
+  default: 'lzocateli/NUV.Comics.Api'
 - name: imageTag
   displayName: 'Tag para a Imagem'
   type: string
@@ -10,15 +10,15 @@ parameters:
 - name: containerName
   displayName: 'Nome do Container'
   type: string
-  default: 'CepApi'
+  default: 'ComicsApi'
 - name: configApp
   displayName: 'Nome do arquivo de configuracao para nginx'
   type: string
-  default: 'CepApi'
+  default: 'ComicsApi'
 - name: envFilePath
   displayName: 'Path do arquivo de configuracao dentro de SecurityFiles'
   type: string
-  default: 'Cep'
+  default: 'Comics'
 - name: newImage
   displayName: 'Criar nova imagem ?'
   type: boolean
@@ -62,7 +62,7 @@ stages:
       - name: buildConfiguration
         value: "Release"
       - name: reposytoryWork
-        value: "CepApi"
+        value: "ComicsApi"
 
     pool:
       vmimage: $(vmImageName)
@@ -87,4 +87,4 @@ stages:
     envFilePath: ${{ parameters.envFilePath }}
     PREFIX_TFSTATE_NAME: ${{ parameters.envFilePath }}
     newImage: ${{ parameters.newImage }}
-    reposytoryWork: "CepApi"
+    reposytoryWork: "ComicsApi"

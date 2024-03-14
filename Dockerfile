@@ -43,4 +43,4 @@ EXPOSE $AppPort 5000
 ENV LD_LIBRARY_PATH=/home/$UserApp/app/clidriver/lib:/home/$UserApp/app/clidriver/lib/libdb2.so \
     PATH=$PATH:/home/$UserApp/app/clidriver/bin:/home/$UserApp/app/clidriver/lib
 
-ENTRYPOINT ["dotnet", "NUV.Cep.Api.dll"]
+ENTRYPOINT ["dotnet", "NUV.Comics.Api.dll"]
