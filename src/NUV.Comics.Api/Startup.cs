@@ -38,7 +38,7 @@ namespace CBL.Startup.Custom
             services.AddNuvHttpClient(Configuration);
 
             services.AddEmailSetup(Configuration);
-            services.AddGlobalHandlerExComicstionSetup();
+            services.AddGlobalHandlerExceptionSetup();
             services.AddHandlingHeadersMiddlewareSetup();
             services.AddSwaggerSetup();
 
@@ -57,7 +57,7 @@ namespace CBL.Startup.Custom
             {
                 if (env.IsDevelopment())
                 {
-                    app.UseDeveloperExComicstionPage();
+                    app.UseDeveloperExceptionPage();
                     app.UseCors("Development");
                 }
                 else
@@ -65,11 +65,11 @@ namespace CBL.Startup.Custom
                     app.UseCors("Production");
                     if (DebugMode.IsDebug)
                     {
-                        app.UseDeveloperExComicstionPage();
+                        app.UseDeveloperExceptionPage();
                     }
                     else
                     {
-                        app.UseGlobalExComicstionHandlerMiddleware();
+                        app.UseGlobalExceptionHandlerMiddleware();
                     }
                     app.UseHsts();
                 }

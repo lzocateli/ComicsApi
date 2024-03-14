@@ -76,14 +76,14 @@ namespace NUV.Comics.Infra.Data.Sql.Context
 
                 return await Task.FromResult(registries);
             }
-            catch (DbUpdateExComicstion ex)
+            catch (DbUpdateException ex)
             {
                 PropertyValues proposedValues;
                 PropertyValues databaseValues;
                 var columnName = string.Empty;
 
                 var baseMessage = new StringBuilder()
-                    .AppendLine($"Houve um erro em SaveChanges, verifique o log de erros: {ex.Message} inner: {ex?.InnerExComicstion?.Message}");
+                    .AppendLine($"Houve um erro em SaveChanges, verifique o log de erros: {ex.Message} inner: {ex?.InnerException?.Message}");
 
                 foreach (var entry in ex.Entries)
                 {
@@ -105,9 +105,9 @@ namespace NUV.Comics.Infra.Data.Sql.Context
                 Debug.WriteLine($"{baseMessage}");
                 throw;
             }
-            catch (ExComicstion ex)
+            catch (Exception ex)
             {
-                Debug.WriteLine($"{ex.Message} inner: {ex?.InnerExComicstion?.Message}");
+                Debug.WriteLine($"{ex.Message} inner: {ex?.InnerException?.Message}");
                 throw;
             }
         }

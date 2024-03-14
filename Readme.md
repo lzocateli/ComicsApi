@@ -125,10 +125,10 @@ dotnet sln SuaSolution.sln add (ls ./src/*/*.csproj)
 - Renomear os arquivos csproj e pastas do projeto
 ```bash
 #Primeiro execute para Pastas
-find ./src -type d -name 'NUV.Cep.*' -exec /bin/bash -c 'mv "$0" "${0/Cep/Comics}"' {} \;
+find ./src -type d -name 'NUV.Comics.*' -exec /bin/bash -c 'mv "$0" "${0/Comics/NovoNome}"' {} \;
 #Depois para Arquivos
-find ./src -type f -name 'NUV.Cep.*' -exec /bin/bash -c 'mv "$0" "${0/Cep/Comics}"' {} \;
+find ./src -type f -name 'NUV.Comics.*' -exec /bin/bash -c 'mv "$0" "${0/Comics/NovoNome}"' {} \;
 #Soluction
-mv CepApi.sln ComicsApi.sln
+mv ComicsApi.sln NovoNomeApi.sln
 ```
 ----

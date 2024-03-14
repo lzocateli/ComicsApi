@@ -19,7 +19,7 @@ namespace CBL.Startup.Custom
 
                 await host.RunAsync();
             }
-            catch (ExComicstion ex)
+            catch (Exception ex)
             {
                 var errorMessage = "Erro na inicialização ou finalização da aplicação = ";
 
