@@ -55,7 +55,7 @@ namespace NUV.Comics.Infra.Data.Db2.Context
                 Console.WriteLine($"***** {nameof(Db2DbContext)} {schema} *****");
             }
 
-            optionsBuilder.UseExComicstionProcessor();
+            optionsBuilder.UseExceptionProcessor();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -83,12 +83,12 @@ namespace NUV.Comics.Infra.Data.Db2.Context
 
                 return await Task.FromResult(registries);
             }
-            catch (CustomExComicstion ex)
+            catch (CustomException ex)
             {
-                Debug.WriteLine($"O conteudo da exComicstion deve ser consultada no log da aplicação: {ex.Message} Inner: {ex?.InnerExComicstion?.Message}");
+                Debug.WriteLine($"O conteudo da Exception deve ser consultada no log da aplicação: {ex.Message} Inner: {ex?.InnerException?.Message}");
                 throw;
             }
-            catch (CustomDbUpdateExComicstion ex)
+            catch (CustomDbUpdateException ex)
             {
                 Debug.WriteLine($"{ex.Message}");
 
@@ -98,9 +98,9 @@ namespace NUV.Comics.Infra.Data.Db2.Context
                 }
                 throw;
             }
-            catch (ExComicstion ex)
+            catch (Exception ex)
             {
-                Debug.WriteLine($"O conteudo da exComicstion deve ser consultada no log da aplicação: {ex.Message} Inner: {ex?.InnerExComicstion?.Message}");
+                Debug.WriteLine($"O conteudo da Exception deve ser consultada no log da aplicação: {ex.Message} Inner: {ex?.InnerException?.Message}");
                 throw;
             }
         }
