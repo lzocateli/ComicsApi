@@ -118,8 +118,8 @@ C:\Users\lzob8c1\AppData\Roaming\Microsoft\UserSecrets\NUV.Comics.Api\secrets.js
 - Criando uma Solution e incluindo ou removendo projetos nela
 ```bash
 dotnet new sln -n SuaSolution (sem extenção)
-dotnet sln SuaSolution.sln remove (ls ./src/*/*.csproj)
-dotnet sln SuaSolution.sln add (ls ./src/*/*.csproj)
+dotnet sln SuaSolution.sln remove $(ls ./src/*/*.csproj)
+dotnet sln SuaSolution.sln add $(ls ./src/*/*.csproj)
 ```
 
 - Renomear os arquivos csproj e pastas do projeto

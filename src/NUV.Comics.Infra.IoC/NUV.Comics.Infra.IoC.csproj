@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nuuvify.CommonPack.HealthCheck" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.Security" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.StandardHttpClient" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.UnitOfWork" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.Middleware" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.Email" Version="1.7.2" />
-    <PackageReference Include="Nuuvify.CommonPack.OpenApi" Version="1.7.2" />
+    <PackageReference Include="Nuuvify.CommonPack.HealthCheck" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.Security" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.StandardHttpClient" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.UnitOfWork" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.Middleware" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.Email" Version="2.0.0-preview.24031501" />
+    <PackageReference Include="Nuuvify.CommonPack.OpenApi" Version="2.0.0-preview.24031501" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>

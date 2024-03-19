@@ -8,7 +8,7 @@ global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.AspNetCore.HttpOverrides;
 global using Microsoft.AspNetCore.Localization;
 global using Microsoft.AspNetCore.Mvc;
-global using Microsoft.AspNetCore.Mvc.ApiExplorer;
+global using Asp.Versioning.ApiExplorer;
 global using Microsoft.AspNetCore.Mvc.Formatters;
 global using Microsoft.AspNetCore.ResponseCompression;
 global using Microsoft.EntityFrameworkCore;
