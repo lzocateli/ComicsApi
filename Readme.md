@@ -164,4 +164,4 @@ mv ComicsApi.sln NovoNomeApi.sln
 
 ## Arquitetura da aplicação
 
-![Arquitetura da Aplicação](https://github.com/lzocateli/ComicsApi/assets/16601706/02ffe808-f219-4ac4-bb24-1c01e3b372ac)
+![Arquitetura da Aplicação](.attachements/Arquitetura%20da%20Aplicação.png)
