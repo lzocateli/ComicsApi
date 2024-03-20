@@ -69,6 +69,33 @@ dotnet tool install dotnet-ef --version 3.1.26
 
 - Para gerar as classes baseado nas tabelas (Execute esses comandos na pasta onde esta a solution):: use o caractere ` antes de $ caso sua senha possua esse caractere
 
+- PostgreSQL
+```json
+  "ConnectionStrings": {
+    "vendas": "Database=dddddddddddd;Host=ec2-34-205-209-14;Port=5432;User Id=zzzzzzzz;Password=xxxxxxxxxxxx;SSL Mode=Require;Trust Server Certificate=true;"
+  },
+
+```
+- SqlServer
+```json
+  "ConnectionStrings": {
+    "vendas": "Server=seudominio.com.br;Initial Catalog=MeuDB;Integrated Security=False;User ID=zzzzzzz;Password=xxxxxxxxxx;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  },
+
+```
+- Oracle
+```json
+  "ConnectionStrings": {
+    "vendas": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=seudominio.com.br)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=test.blabla.com)));User ID=ZZZZZZZZZ;Password=xxxxxxxxxx;Persist Security Info=True;"
+  },
+```
+- IBM DB2
+```json
+  "ConnectionStrings": {
+    "vendas": "Server=seudominio.com.br:3700;Database=MeuDb;UID=zzzzzzz;PWD=xxxxxxxxx;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted"
+  },
+```
+
 ```bash
 dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=MEUBANCO;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Comics.Api\NUV.Comics.Api.csproj -p .\src\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t Comics --use-database-names --context-dir Data -o Models
 ```
