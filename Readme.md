@@ -96,6 +96,8 @@ dotnet tool install dotnet-ef --version 3.1.26
   },
 ```
 
+- Para gerar as classes do EFCore quando já existir o banco
+
 ```bash
 dotnet ef dbcontext scaffold "Server=serverdb2.com:3700;Database=MEUBANCO;UID=XXXXXX;PWD=XXXXXXX;Connect Timeout=30;ConcurrentAccessResolution=SkipLockedData;IsolationLevel=ReadUncommitted" IBM.EntityFrameworkCore -s .\src\NUV.Comics.Api\NUV.Comics.Api.csproj -p .\src\NUV.Comics.Infra.Data\NUV.Comics.Infra.Data.csproj -c AppDbContext -v --schema "cadastro$" -t Comics --use-database-names --context-dir Data -o Models
 ```
