@@ -36,3 +36,4 @@ global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using Swashbuckle.AspNetCore.Annotations;
 global using static CBL.Startup.Custom.Setups.AuthorizationSetup;
+global using Common.Api.Extensions;
