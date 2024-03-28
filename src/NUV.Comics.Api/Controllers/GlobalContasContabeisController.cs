@@ -37,7 +37,7 @@ namespace NUV.Comics.Api.Controllers
         [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
         [SwaggerResponse(500, type: typeof(ReturnStandardErrors<NotificationR>), description: "Houve uma exceção que foi tratada pela aplicação e registrada em log")]
         [HttpGet, MapToApiVersion("1.0")]
-        [Authorize(Policy = PolicyGroupConstants.GroupUsers)]
+        //[Authorize(Policy = PolicyGroupConstants.GroupUsers)]
         [Route("saldo-conta")]
         public async Task<IActionResult> ObterSaldoDaContaAsync([FromQuery] string empresa, string conta,
             int ano, string tipo, string versao, string somaInd, string fiscalCd, int skip = 0, int take = 100000)

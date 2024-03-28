@@ -21,5 +21,8 @@
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NUV.Comics.Infra.IoC\NUV.Comics.Infra.IoC.csproj" />
+  </ItemGroup>
 
 </Project>
