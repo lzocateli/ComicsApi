@@ -1,7 +1,7 @@
 ﻿// using Common.Helpers;
 
 
-// namespace CBL.Startup.Custom
+// namespace Startup.Custom
 // {
 //     public static class Program
 //     {

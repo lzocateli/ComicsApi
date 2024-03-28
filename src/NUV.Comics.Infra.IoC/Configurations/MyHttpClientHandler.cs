@@ -1,4 +1,4 @@
-﻿namespace CBL.Common.IoC
+﻿namespace Startup.Custom
 {
     /// <summary>
     /// Essa classe é necessario para executar os programas no Linux com uso de proxy <br/>

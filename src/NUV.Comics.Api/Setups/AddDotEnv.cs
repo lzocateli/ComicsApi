@@ -1,4 +1,4 @@
-namespace Common.Helpers
+namespace Startup.Custom
 {
     using System;
     using System.IO;

@@ -1,8 +1,8 @@
 ﻿using NUV.Comics.Infra.IoC;
 using NUV.Comics.Infra.IoC.Configurations;
-using CBL.Startup.Custom.Setups;
+using Startup.Custom;
 
-namespace CBL.Startup.Custom
+namespace Startup.Custom
 {
     public class Startup
     {

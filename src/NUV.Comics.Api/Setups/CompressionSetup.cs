@@ -1,4 +1,4 @@
-﻿namespace CBL.Startup.Custom.Setups
+﻿namespace Startup.Custom
 {
     //FIXME: O Servidor WEB deve fazer a compressão, precisa testar e então remover essa classe.
     public static class CompressionSetup

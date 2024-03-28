@@ -1,4 +1,4 @@
-namespace CBL.Startup.Custom.Setups
+namespace Startup.Custom
 {
     public static class DebugMode
     {

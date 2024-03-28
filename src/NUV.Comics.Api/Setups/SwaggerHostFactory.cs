@@ -1,4 +1,4 @@
-// namespace CBL.Startup.Custom
+// namespace Startup.Custom
 // {
 //     /// <summary>
 //     /// Essa classe é exigencia da Swagger conforme documentação do GitHub

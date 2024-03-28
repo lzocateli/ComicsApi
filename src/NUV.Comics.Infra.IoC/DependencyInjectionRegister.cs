@@ -11,7 +11,7 @@ namespace NUV.Comics.Infra.IoC
         /// Transient: Criado uma instancia cada vez que o objeto é instanciado.
         /// </summary>
         /// <param name="services"></param>
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.Load("NUV.Comics.Infra.IoC"));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.Load("NUV.Comics.Infra.IoC")));
