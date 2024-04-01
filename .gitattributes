@@ -1,7 +1,12 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+*           text=auto
+*.txt		text
+*.vcproj	text eol=crlf
+*.sh		text eol=lf
+*.ini		text eol=lf
+*.jpg		-text
 
 ###############################################################################
 # Set default behavior for command prompt diff.
