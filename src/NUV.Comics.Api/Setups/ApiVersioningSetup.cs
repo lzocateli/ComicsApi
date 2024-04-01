@@ -1,19 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace CBL.Startup.Custom.Setups
+﻿namespace Startup.Custom
 {
     public static class ApiVersioningSetup
     {
         public static void AddApiVersioningSetup(this IServiceCollection services)
         {
-            // services.AddVersionedApiExplorer(options =>
-            // {
-            //     options.GroupNameFormat = "'v'VVV";
-            //     options.SubstituteApiVersionInUrl = true;
-            // });
             services.AddApiVersioning(options =>
             {
+                options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
+            }).AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
         }
     }

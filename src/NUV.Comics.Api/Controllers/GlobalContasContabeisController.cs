@@ -2,7 +2,7 @@
 
 namespace NUV.Comics.Api.Controllers
 {
-    // [ApiVersion("1.0")]
+    [ApiVersion("1.0")]
     [Route("v{api-version:apiVersion}/[controller]")]
     public class GlobalContasContabeisController : BaseController
     {
@@ -31,13 +31,13 @@ namespace NUV.Comics.Api.Controllers
         /// <param name="take">Quantidade de linhas para retornar depois do pulo</param>
         /// <returns></returns>
         [Produces("application/json")]
-        // [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<IEnumerable<object>>), description: "Codigo de retorno quando o metodo processou a solicitação do client")]
-        // [SwaggerResponse(204, description: "Codigo de retorno quando o metodo processou a solicitação do client, mas o retorno é nulo")]
-        // [SwaggerResponse(422, type: typeof(IEnumerable<ReturnStandardErrors<NotificationR>>), description: "Codigo de retorno quando o metodo processou a solicitação do client, com notificações")]
-        // [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
-        // [SwaggerResponse(500, type: typeof(ReturnStandardErrors<NotificationR>), description: "Houve uma exceção que foi tratada pela aplicação e registrada em log")]
-        // [HttpGet, MapToApiVersion("1.0")]
-        [Authorize(Policy = PolicyGroupConstants.GroupUsers)]
+        [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<IEnumerable<object>>), description: "Codigo de retorno quando o metodo processou a solicitação do client")]
+        [SwaggerResponse(204, description: "Codigo de retorno quando o metodo processou a solicitação do client, mas o retorno é nulo")]
+        [SwaggerResponse(422, type: typeof(IEnumerable<ReturnStandardErrors<NotificationR>>), description: "Codigo de retorno quando o metodo processou a solicitação do client, com notificações")]
+        [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
+        [SwaggerResponse(500, type: typeof(ReturnStandardErrors<NotificationR>), description: "Houve uma exceção que foi tratada pela aplicação e registrada em log")]
+        [HttpGet, MapToApiVersion("1.0")]
+        //[Authorize(Policy = PolicyGroupConstants.GroupUsers)]
         [Route("saldo-conta")]
         public async Task<IActionResult> ObterSaldoDaContaAsync([FromQuery] string empresa, string conta,
             int ano, string tipo, string versao, string somaInd, string fiscalCd, int skip = 0, int take = 100000)
@@ -100,12 +100,12 @@ namespace NUV.Comics.Api.Controllers
         /// <param name="take">Quantidade de linhas para retornar depois do pulo</param>
         /// <returns></returns>
         [Produces("application/json")]
-        // [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<IEnumerable<int>>), description: "Codigo de retorno quando o metodo processou a solicitação do client")]
-        // [SwaggerResponse(204, description: "Codigo de retorno quando o metodo processou a solicitação do client, mas o retorno é nulo")]
-        // [SwaggerResponse(422, type: typeof(IEnumerable<ReturnStandardErrors<NotificationR>>), description: "Codigo de retorno quando o metodo processou a solicitação do client, com notificações")]
-        // [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
-        // [SwaggerResponse(500, type: typeof(ReturnStandardErrors<NotificationR>), description: "Houve uma exceção que foi tratada pela aplicação e registrada em log")]
-        // [HttpGet, MapToApiVersion("1.0")]
+        [SwaggerResponse(200, type: typeof(ReturnStandardSuccess<IEnumerable<int>>), description: "Codigo de retorno quando o metodo processou a solicitação do client")]
+        [SwaggerResponse(204, description: "Codigo de retorno quando o metodo processou a solicitação do client, mas o retorno é nulo")]
+        [SwaggerResponse(422, type: typeof(IEnumerable<ReturnStandardErrors<NotificationR>>), description: "Codigo de retorno quando o metodo processou a solicitação do client, com notificações")]
+        [SwaggerResponse(417, type: typeof(IEnumerable<ReturnStandardErrorsModelState>), description: "Codigo de retorno para erro nos dados enviados pelo client")]
+        [SwaggerResponse(500, type: typeof(ReturnStandardErrors<NotificationR>), description: "Houve uma exceção que foi tratada pela aplicação e registrada em log")]
+        [HttpGet, MapToApiVersion("1.0")]
         [Authorize(Policy = PolicyGroupConstants.GroupUsers)]
         [Route("saldo-conta-profitcenter")]
         public async Task<IActionResult> ObterSaldoDaContaProfitCenterAsync([FromQuery] string empresa,

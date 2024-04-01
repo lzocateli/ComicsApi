@@ -1,4 +1,4 @@
-﻿namespace CBL.Cws.Api.v1.Controllers
+﻿namespace NUV.Home.Api.v1.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     public class HomeController : Controller

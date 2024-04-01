@@ -3,6 +3,9 @@ namespace NUV.Comics.Infra.Data.Repositories
 {
     public class GlobalCentroDeCustoRepositorio : BaseRepositoryReadOnly<object>
     {
+
+        private readonly Db2DbContext _db2Context;
+
         public GlobalCentroDeCustoRepositorio(Db2DbContext dbContext,
             IMapper mapper)
             : base(dbContext, mapper)
@@ -10,6 +13,23 @@ namespace NUV.Comics.Infra.Data.Repositories
             ownerDB = dbContext.ownerDB;
             var cnn = dbContext.Configuration.GetSectionValue("AppConfig:OwnerDB:Cnn");
             SetDbConnection(dbContext?.Database.GetDbConnection(), dbContext.Configuration.GetConnectionString(cnn));
+
+            _db2Context = dbContext;
+        }
+
+
+        /// <summary>
+        /// Exemplo de update em massa BulkUpdate
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> ExemploUpdateMassa()
+        {
+
+            var result = await _db2Context.Embalagens
+                .Where(x => x.EMB_CD_CTB != null)
+                .ExecuteUpdateAsync(x => x.SetProperty(u => u.EMB_V_PREC_UNT, 0));
+
+            return result;
         }
 
         // public async Task<IEnumerable<GlobalCentroDeCustoQueryResult>> ObterContaPorCodigo(string empresa, string centroCusto, DateTime vigencia)

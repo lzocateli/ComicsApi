@@ -1,6 +1,6 @@
 ﻿using Nuuvify.CommonPack.Security.JwtOpenId;
 
-namespace CBL.Startup.Custom.Setups
+namespace Startup.Custom
 {
     public static class AuthorizationSetup
     {
@@ -16,6 +16,20 @@ namespace CBL.Startup.Custom.Setups
         public static void AddNuvAuthorizationSetup(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddCblSecuritySetup(configuration);
+            //https://credential.zocate.li/auth/realms/my-realm/.well-known/openid-configuration
+            string KeycloakServerRealm = "https://credential.zocate.li/auth/realms/my-realm";
+            string KeycloakClientId = "xxxxxxxxxxxxxxxxx";
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.Authority = KeycloakServerRealm;
+                o.Audience = KeycloakClientId;
+                o.MetadataAddress = $"{KeycloakServerRealm}/.well-known/openid-configuration";
+            });
+
 
             services.AddAuthorization(options =>
             {

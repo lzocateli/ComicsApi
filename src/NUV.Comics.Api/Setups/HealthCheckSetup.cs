@@ -1,7 +1,7 @@
 using NUV.Comics.Infra.Data.Db2.Context;
 using NUV.Comics.Infra.Data.Sql.Context;
 
-namespace CBL.Startup.Custom.Setups
+namespace Startup.Custom
 {
     public static class HealthChecksSetup
     {
