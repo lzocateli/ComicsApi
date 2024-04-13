@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Extensions.Azure;
-
 var builder = WebApplication.CreateBuilder(args);
 
 

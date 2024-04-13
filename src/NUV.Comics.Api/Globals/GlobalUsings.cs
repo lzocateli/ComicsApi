@@ -37,3 +37,4 @@ global using System.Text.Json.Serialization;
 global using Swashbuckle.AspNetCore.Annotations;
 global using static Startup.Custom.AuthorizationSetup;
 global using Startup.Custom;
+global using Microsoft.Extensions.Azure;

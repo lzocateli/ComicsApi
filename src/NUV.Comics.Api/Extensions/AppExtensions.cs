@@ -57,6 +57,11 @@ public static class AppExtensions
                 options.SwaggerEndpoint(vpath + apiVersionDescription.GroupName + "/swagger.json", apiVersionDescription.GroupName.ToUpperInvariant());
                 options.RoutePrefix = "docs";
             }
+            // foreach (ApiVersionDescription apiVersionDescription in provider.ApiVersionDescriptions)
+            // {
+            //     options.SwaggerEndpoint(vpath + apiVersionDescription.GroupName + "/swagger.json", apiVersionDescription.GroupName.ToUpperInvariant());
+            //     options.RoutePrefix = "docs";
+            // }
         });
 
 
