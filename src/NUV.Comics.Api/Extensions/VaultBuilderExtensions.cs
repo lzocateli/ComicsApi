@@ -27,7 +27,6 @@ public static class VaultBuilderExtensions
 
         if (builder.Environment.IsDevelopment())
         {
-            //    config.AddUserSecrets<Startup>();
             configBuilder.AddUserSecrets<Program>();
         }
     }

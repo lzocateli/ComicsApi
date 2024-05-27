@@ -1,4 +1,5 @@
 using NUV.Comics.Infra.IoC;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Startup.Custom;
 
@@ -29,7 +30,7 @@ public static class BuilderExtensions
 
         builder.Services.AddStandardHttpClientSetup(builder.Configuration, false);
         builder.Services.AddStandardWebServiceSetup();
-        builder.Services.AddHealthChecksSetup(builder.Configuration);
+        // builder.Services.AddHealthChecksSetup(builder.Configuration);
         builder.Services.AddNuvHttpClient(builder.Configuration);
 
         builder.Services.AddEmailSetup(builder.Configuration);
@@ -38,7 +39,6 @@ public static class BuilderExtensions
         builder.Services.AddSwaggerSetup();
 
         DependencyInjectionRegister.RegisterServices(builder.Services);
-
 
 
     }
