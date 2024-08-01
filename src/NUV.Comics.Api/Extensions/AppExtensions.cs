@@ -1,4 +1,3 @@
-using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Startup.Custom;
 
@@ -6,7 +5,6 @@ namespace Startup.Custom;
 public static class AppExtensions
 {
 
-    public static IApiVersionDescriptionProvider Provider;
     public static void UseArchitectures(this WebApplication app)
     {
 
@@ -39,25 +37,9 @@ public static class AppExtensions
 
         app.UseStaticFiles();
 
+        app.MapControllers();
+        app.UseSwaggerConfiguration();
 
-        app.UseEndpoints(config =>
-        {
-            config.MapDefaultControllerRoute();
-        });
-
-        // app.UseSwaggerConfiguration(app.Configuration, Provider);
-
-        string vpath = app.Configuration.GetSection("VirtualPath")?.Value?.Trim() ?? string.Empty;
-        vpath = (string.IsNullOrWhiteSpace(vpath) ? "/swagger/" : ("/" + vpath + "/swagger/"));
-        app.UseSwagger();
-        app.UseSwaggerUI(delegate (SwaggerUIOptions options)
-        {
-            foreach (ApiVersionDescription apiVersionDescription in provider.ApiVersionDescriptions)
-            {
-                options.SwaggerEndpoint(vpath + apiVersionDescription.GroupName + "/swagger.json", apiVersionDescription.GroupName.ToUpperInvariant());
-                options.RoutePrefix = "docs";
-            }
-        });
 
 
     }
